@@ -1,6 +1,6 @@
 [project]
 name = "user-agent-py"
-version = "0.1.0"
+version = "0.1.1"
 description = "Parses User-Agent strings to identify browser, OS, engine, and device using only the standard library."
 requires-python = ">=3.10"
 dependencies = []
