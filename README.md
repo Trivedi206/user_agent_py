@@ -21,3 +21,10 @@ A User-Agent header is the only signal most servers have for browser/OS segmenta
 ## The awkward edge
 
 `device_type` cannot distinguish an iPhone from an iPod touch, because the header does not carry that distinction reliably. We return `"mobile"` for both. Likewise, `Windows NT 10.0` maps to `"10/11"` because the same token covers both Windows 10 and Windows 11; the header itself is identical. A missing field is the empty string `""`, not `None`, so you can index a leaf without guarding.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
